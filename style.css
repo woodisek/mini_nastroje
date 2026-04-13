@@ -15048,3 +15048,764 @@ input:focus, textarea:focus, select:focus {
         gap: 0.25rem;
     }
 }
+/* ==========================================
+   WAVEFORGE VIZUALIZÉR ZVUKU
+   ========================================== */
+
+.waveforge {
+    padding: 0.5rem;
+}
+
+/* Hlavička */
+.wf-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 1rem;
+    color: white;
+}
+
+.wf-icon {
+    font-size: 2.5rem;
+}
+
+.wf-header h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.wf-header p {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* Canvas */
+.wf-canvas-container {
+    background: #1e1e2e;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.wf-canvas {
+    width: 100%;
+    height: auto;
+    background: #1e1e2e;
+    border-radius: 0.5rem;
+}
+
+/* Ovládání */
+.wf-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.wf-btn {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.wf-btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.wf-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.wf-btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.wf-btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+.wf-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Sekce */
+.wf-section {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.wf-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+/* Typy vizualizace */
+.wf-types, .wf-colors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.wf-type-btn {
+    padding: 0.5rem 1rem;
+    background: #f0f0f0;
+    border: 2px solid #e0e0e0;
+    border-radius: 2rem;
+    font-size: 0.813rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.wf-type-btn:hover {
+    background: #e0e0e0;
+}
+
+.wf-type-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+    color: white;
+}
+
+/* Barvy */
+.wf-color-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 0.75rem;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.wf-color-btn:hover {
+    transform: scale(1.05);
+}
+
+.wf-color-btn.active {
+    border-color: #333;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #333;
+}
+
+/* Citlivost */
+.wf-sensitivity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wf-slider {
+    flex: 1;
+    height: 6px;
+    -webkit-appearance: none;
+    background: #e0e0e0;
+    border-radius: 3px;
+}
+
+.wf-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Hlasitost */
+.wf-volume-meter {
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.wf-volume-bar {
+    width: 0%;
+    height: 100%;
+    transition: width 0.1s ease;
+}
+
+.wf-volume-value {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Tip */
+.wf-tip {
+    background: #e3f2fd;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    color: #1976d2;
+}
+
+/* Responzivní */
+@media (max-width: 640px) {
+    .wf-controls {
+        flex-direction: column;
+    }
+    
+    .wf-types, .wf-colors {
+        justify-content: center;
+    }
+}
+/* ==========================================
+   FREQUENCY SOUND GENERATOR
+   ========================================== */
+
+.frequency-generator {
+    padding: 0.5rem;
+}
+
+/* Hlavička */
+.fg-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 1rem;
+    color: white;
+}
+
+.fg-icon {
+    font-size: 2.5rem;
+}
+
+.fg-header h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.fg-header p {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* Sekce */
+.fg-section {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.fg-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+/* Frekvence */
+.fg-frequency-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.fg-freq-btn {
+    width: 44px;
+    height: 44px;
+    background: #f0f0f0;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.fg-freq-btn:hover {
+    background: #e0e0e0;
+    border-color: #667eea;
+}
+
+.fg-frequency-input {
+    width: 100px;
+    height: 44px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.75rem;
+}
+
+.fg-slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    background: #e0e0e0;
+    border-radius: 3px;
+    margin: 0.5rem 0;
+}
+
+.fg-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Presety */
+.fg-frequency-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.fg-preset {
+    padding: 0.5rem 1rem;
+    background: #f0f0f0;
+    border: 2px solid #e0e0e0;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.fg-preset:hover {
+    background: #e0e0e0;
+}
+
+.fg-preset.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+    color: white;
+}
+
+/* Hlasitost */
+.fg-volume-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.fg-volume-value {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 0.5rem;
+}
+
+/* Průběhy vln */
+.fg-waveforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.fg-wave-btn {
+    flex: 1;
+    padding: 0.5rem;
+    background: #f0f0f0;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-size: 0.813rem;
+    cursor: pointer;
+}
+
+.fg-wave-btn:hover {
+    background: #e0e0e0;
+}
+
+.fg-wave-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+    color: white;
+}
+
+/* Tlačítka */
+.fg-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.fg-btn {
+    flex: 1;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fg-btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.fg-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.fg-btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.fg-btn-secondary:hover:not(:disabled) {
+    background: #e0e0e0;
+}
+
+.fg-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Vizualizace */
+.fg-visualization {
+    background: #1e1e2e;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.fg-wave-canvas {
+    width: 100%;
+    height: auto;
+    background: #1e1e2e;
+    border-radius: 0.5rem;
+}
+
+/* Info */
+.fg-info {
+    display: flex;
+    justify-content: space-between;
+    background: #f8f9fa;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.fg-info-item {
+    flex: 1;
+}
+
+.fg-info-item span {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.fg-info-item strong {
+    font-size: 1rem;
+    color: #667eea;
+}
+
+/* Tip */
+.fg-tip {
+    background: #e3f2fd;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    color: #1976d2;
+}
+
+/* Responzivní */
+@media (max-width: 640px) {
+    .fg-buttons {
+        flex-direction: column;
+    }
+    
+    .fg-frequency-presets {
+        justify-content: center;
+    }
+    
+    .fg-waveforms {
+        flex-direction: column;
+    }
+    
+    .fg-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+/* ==========================================
+   PIANO
+   ========================================== */
+
+.piano {
+    padding: 0.5rem;
+}
+
+/* Hlavička */
+.piano-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 1rem;
+    color: white;
+}
+
+.piano-icon {
+    font-size: 2.5rem;
+}
+
+.piano-header h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.piano-header p {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* Ovládání */
+.piano-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 1rem;
+}
+
+.piano-octave {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.piano-octave-btn {
+    width: 36px;
+    height: 36px;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.piano-octave-btn:hover {
+    background: #ccc;
+}
+
+.piano-octave-display {
+    font-size: 1.25rem;
+    font-weight: 700;
+    min-width: 40px;
+    text-align: center;
+}
+
+.piano-volume {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.piano-volume-slider {
+    width: 120px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: #e0e0e0;
+    border-radius: 2px;
+}
+
+.piano-volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #667eea;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.piano-waveform-select {
+    padding: 0.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    background: white;
+}
+
+/* Klávesy */
+.piano-keys {
+    position: relative;
+    height: 220px;
+    margin-bottom: 1.5rem;
+    user-select: none;
+}
+
+.piano-white-keys {
+    display: flex;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.piano-white-key {
+    flex: 1;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.05s;
+}
+
+.piano-white-key:hover {
+    background: #f5f5f5;
+}
+
+.piano-white-key.piano-key-active {
+    background: #e0e0e0;
+}
+
+.piano-key-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.piano-key-shortcut {
+    font-size: 0.6rem;
+    color: #999;
+    margin-top: 2px;
+}
+
+.piano-black-keys {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    z-index: 2;
+}
+
+.piano-black-key {
+    position: absolute;
+    width: 36px;
+    height: 140px;
+    background: #333;
+    border-radius: 0 0 6px 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    transition: background 0.05s;
+}
+
+.piano-black-key:hover {
+    background: #444;
+}
+
+.piano-black-key.piano-key-active {
+    background: #555;
+}
+
+.piano-black-key .piano-key-shortcut {
+    color: #aaa;
+    font-size: 0.6rem;
+}
+
+/* Nápověda */
+.piano-details {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.piano-details summary {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #667eea;
+    cursor: pointer;
+}
+
+.piano-shortcuts {
+    margin-top: 1rem;
+}
+
+.piano-shortcut-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.25rem 0;
+    font-size: 0.813rem;
+}
+
+.piano-shortcut-row strong {
+    color: #667eea;
+}
+
+/* Tip */
+.piano-tip {
+    background: #e3f2fd;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    color: #1976d2;
+}
+
+/* Responzivní */
+@media (max-width: 640px) {
+    .piano-controls {
+        flex-direction: column;
+    }
+    
+    .piano-keys {
+        height: 180px;
+    }
+    
+    .piano-black-key {
+        width: 30px;
+        height: 110px;
+    }
+    
+    .piano-key-label {
+        font-size: 0.6rem;
+    }
+    
+    .piano-key-shortcut {
+        font-size: 0.5rem;
+    }
+    
+    .piano-shortcut-row {
+        justify-content: center;
+    }
+}
