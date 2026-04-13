@@ -384,7 +384,14 @@ export const apps = [
     description: 'Vytvoř si jedinečné uživatelské jméno',
     icon: '👤',
     component: () => import('./apps/username-generator.js')
-}
+},
+{
+    id: 'line-counter',
+    name: 'Počítadlo řádků',
+    description: 'Spočítej řádky, prázdné řádky, znaky a slova v textu',
+    icon: '📊',
+    component: () => import('./apps/line-counter.js')
+},
 ];
 
 // Pro snadné přidávání nových aplikací - stačí zkopírovat tento objekt a vyplnit
