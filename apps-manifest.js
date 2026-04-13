@@ -343,6 +343,48 @@ export const apps = [
     icon: '🎵',
     component: () => import('./apps/frequency-generator.js')
 },
+{
+    id: 'quote-generator',
+    name: 'Generátor citátů',
+    description: 'Motivace, inspirace a moudra na každý den',
+    icon: '💬',
+    component: () => import('./apps/quote-generator.js')
+},
+{
+    id: 'nickname-generator',
+    name: 'Generátor přezdívek',
+    description: 'Vytvoř si jedinečnou přezdívku',
+    icon: '🎭',
+    component: () => import('./apps/nickname-generator.js')
+},
+{
+    id: 'excuse-generator',
+    name: 'Generátor výmluv',
+    description: 'Když potřebuješ rychlou omluvu',
+    icon: '📝',
+    component: () => import('./apps/excuse-generator.js')
+},
+{
+    id: 'meal-generator',
+    name: 'Co dnes k večeři?',
+    description: 'Generátor nápadů na jídlo',
+    icon: '🍕',
+    component: () => import('./apps/meal-generator.js')
+},
+{
+    id: 'fact-generator',
+    name: 'Zajímavé fakty',
+    description: 'Nauč se něco nového každý den',
+    icon: '💡',
+    component: () => import('./apps/fact-generator.js')
+},
+{
+    id: 'username-generator',
+    name: 'Generátor přezdívek',
+    description: 'Vytvoř si jedinečné uživatelské jméno',
+    icon: '👤',
+    component: () => import('./apps/username-generator.js')
+}
 ];
 
 // Pro snadné přidávání nových aplikací - stačí zkopírovat tento objekt a vyplnit
