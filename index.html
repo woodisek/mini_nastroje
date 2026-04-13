@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- SEO -->
+    <title>Mini Nástroje | Kolekce užitečných nástrojů pro každý den</title>
+    <meta name="description" content="Kolekce užitečných nástrojů pro každý den - kopírování emoji, generování kódů, formátování pro Google Sheets, kalkulačky, převodníky a mnoho dalšího.">
+    <meta name="keywords" content="nástroje, online nástroje, kalkulačka, převodník, generátor, emoji, SEO, PWA">
+    <meta name="author" content="Mini Nástroje">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Mini Nástroje">
+    <meta property="og:description" content="Kolekce užitečných nástrojů pro každý den">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tvoje-url.cz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mini Nástroje">
+    <meta name="twitter:description" content="Kolekce užitečných nástrojů pro každý den">
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Theme color pro prohlížeč -->
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Apple touch icon -->
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Hlavička -->
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <span class="header-icon"></span>
+                    Mini Nástroje
+                </h1>
+                <p class="subtitle">Kolekce užitečných nástrojů pro každý den</p>
+            </div>
+            
+            <!-- Vyhledávání a filtrování -->
+            <div class="header-controls">
+                <div class="search-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" class="search-input" placeholder="Hledat nástroj...">
+                    <button id="clear-search" class="clear-search" style="display: none;">✕</button>
+                </div>
+                
+                <div class="filter-buttons">
+                    <button data-filter="all" class="filter-btn active">🎲 Všechny</button>
+                    <button data-filter="favorites" class="filter-btn">⭐ Oblíbené</button>
+                    <button data-filter="recent" class="filter-btn">🕐 Nedávné</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Statistiky -->
+        <div class="stats-bar" id="stats-bar">
+            <div class="stat-item">
+                <span class="stat-value" id="total-apps">0</span>
+                <span class="stat-label">nástrojů</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="favorites-count">0</span>
+                <span class="stat-label">oblíbených</span>
+            </div>
+        </div>
+
+        <!-- Grid karet s nástroji -->
+        <div id="apps-grid" class="apps-grid">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <span>Načítání nástrojů...</span>
+            </div>
+        </div>
+
+        <!-- Zpráva při prázdném výsledku -->
+        <div id="empty-state" class="empty-state" style="display: none;">
+            <span class="empty-icon">🔍</span>
+            <h3>Žádné nástroje nenalezeny</h3>
+            <p>Zkus jiné vyhledávací slovo nebo resetuj filtry</p>
+            <button id="reset-filters" class="reset-btn">Resetovat filtry</button>
+        </div>
+    </div>
+
+    <!-- Modal pro zobrazení aplikace -->
+    <div id="app-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-wrapper">
+                    <span id="modal-icon" class="modal-icon"></span>
+                    <h2 id="modal-title">Nástroj</h2>
+                </div>
+                <div class="modal-actions">
+                    <button id="favorite-toggle" class="modal-favorite-btn" title="Přidat do oblíbených">☆</button>
+                    <button id="close-modal" class="close-btn">&times;</button>
+                </div>
+            </div>
+            <div id="modal-body" class="modal-body">
+                <!-- Sem se vykreslí aplikace -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+    <!-- Registrace Service Workeru pro PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registrován:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registrace selhala:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
