@@ -328,6 +328,27 @@ export const apps = [
     description: 'Převod hrubé a čisté mzdy pro ČR a DE',
     icon: '💰',
     component: () => import('./apps/salary-calculator-pro.js')
+},
+{
+    id: 'waveforge',
+    name: 'WaveForge Visualizer',
+    description: 'Vizualizace zvuku v reálném čase',
+    icon: '🎵',
+    component: () => import('./apps/waveforge.js')
+},
+{
+    id: 'frequency-generator',
+    name: 'Frekvenční generátor',
+    description: 'Generuj tóny o různých frekvencích',
+    icon: '🎵',
+    component: () => import('./apps/frequency-generator.js')
+},
+{
+    id: 'piano',
+    name: 'Piano',
+    description: 'Hraj na klávesách myší nebo klávesnicí',
+    icon: '🎹',
+    component: () => import('./apps/piano.js')
 }
 ];
 
