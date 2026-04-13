@@ -5,6 +5,59 @@ import { showNotification } from './utils/notify.js';
 const FAVORITES_KEY = 'favorite_apps';
 const RECENT_KEY = 'recent_apps';
 
+// ========== PANEL AKTUALIZACÍ ==========
+
+function initUpdatePanel() {
+    const updateList = document.getElementById('update-list');
+    const updatePanel = document.getElementById('update-panel');
+    const updateClose = document.getElementById('update-close');
+    
+    // Panel se vždy zobrazí (žádné ukládání do localStorage)
+    if (updatePanel) {
+        updatePanel.classList.remove('hidden');
+    }
+    
+    // Seznam aktualizací (nejnovější nahoře)
+    const updates = [
+        {
+            date: "13.4.2026",
+            text: "💬 Generátor citátů: přidáno přes 1300+ nových citátů",
+            badge: "Vylepšení"
+        },
+        {
+            date: "13.4.2026",
+            text: "📊 Počítadlo řádků: nová funkce pro rychlé počítání řádků v textu",
+            badge: "Novinka"
+        },
+        {
+            date: "13.4.2026",
+            text: "💡 Zajímavé fakty: nová funkce pro generování náhodných faktů",
+            badge: "Novinka"
+        }
+    ];
+    
+    // Naplnění seznamu aktualizací (zobrazíme posledních 5)
+    if (updateList) {
+        const latestUpdates = updates.slice(0, 5);
+        updateList.innerHTML = latestUpdates.map(update => `
+            <div class="update-item">
+                <span class="update-date">${update.date}</span>
+                <span class="update-text">${update.text}</span>
+                <span class="update-badge">${update.badge}</span>
+            </div>
+        `).join('');
+    }
+    
+    // Zavření panelu (pouze pro tuto relaci, po obnovení stránky se znovu objeví)
+    if (updateClose) {
+        updateClose.addEventListener('click', () => {
+            if (updatePanel) {
+                updatePanel.classList.add('hidden');
+            }
+        });
+    }
+}
+
 // Odstranění diakritiky pro vyhledávání
 function removeDiacritics(str) {
     const diacriticsMap = {
@@ -264,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadAppsGrid();
     updateStats();
     setupSearchAndFilters();
+    initUpdatePanel();
     
     const closeBtn = document.getElementById('close-modal');
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
