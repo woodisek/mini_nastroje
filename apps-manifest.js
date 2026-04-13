@@ -343,13 +343,6 @@ export const apps = [
     icon: '🎵',
     component: () => import('./apps/frequency-generator.js')
 },
-{
-    id: 'piano',
-    name: 'Piano',
-    description: 'Hraj na klávesách myší nebo klávesnicí',
-    icon: '🎹',
-    component: () => import('./apps/piano.js')
-}
 ];
 
 // Pro snadné přidávání nových aplikací - stačí zkopírovat tento objekt a vyplnit
